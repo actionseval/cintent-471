@@ -5,7 +5,7 @@ name: SMACT CI
 on: [repository_dispatch, workflow_dispatch]
 
 jobs:
-  # CINTENT >> REMOVE_COMMIT
+  # CINTENT >> NO_TRACEES
   # qa:
   #   runs-on: ubuntu-latest
   #   steps:
@@ -30,14 +30,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    # CINTENT >> INSERT_CINTENT
-    - uses: JavidDitty/setup-cintent@a606c80c34ec190c6a20dea33d6d58ddb6c4e0cc
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        
+
+    # CINTENT >> INSERT_CINTENT
+    - uses: JavidDitty/setup-cintent@3e5b2faf83a2ad32c22a1cd0f86f5f20ea53a5ab
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip wheel
